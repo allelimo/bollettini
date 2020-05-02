@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="bollettini.Views.BollettiniPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+
+            <RelativePanel>
+                <StackPanel x:Name="bollettini" Margin="0" Background="red" Orientation="Horizontal">
+                    <ComboBox x:Name="ComboBollettini" Width="148" Header="Importo bollettini" SelectionChanged="ComboBollettini_SelectionChanged" />
+                    <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown"/>
+
+                </StackPanel>
+                <StackPanel x:Name="ListaTotali" Margin="24,24,0,0" RelativePanel.RightOf="bollettini" Background="Aqua">
+                    <ListView x:Name="ListViewTest">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackPanel>
+                <StackPanel x:Name="altre" Margin="0,24,0,0" RelativePanel.Below="bollettini" Orientation="Horizontal" Background="Yellow">
+
+                    <ComboBox x:Name="ComboAltro" Width="148" Header="Importo altri servizi" SelectionChanged="ComboAltro_SelectionChanged" />
+                <TextBox x:Name="TextNrAltro" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrAltro_KeyDown"/>
+
+
+                </StackPanel>
+
+                <StackPanel x:Name="totali" Margin="0,24,0,0" RelativePanel.Below="altre" Orientation="Horizontal" Background="Blue">
+
+                    <TextBox x:Name="TextTotale" Width="148" Header="Importo totale" Margin="0,0,0,0" />
+
+
+                </StackPanel>
+
+
+            </RelativePanel>
+        </Grid>
+    </Grid>
+</Page>
