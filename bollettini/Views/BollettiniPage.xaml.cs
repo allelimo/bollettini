@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Controls;
 
 using System.Collections.Generic;  // per list
+using System.Collections.ObjectModel; // per observablecollection
 
 namespace bollettini.Views
 {
@@ -15,6 +16,8 @@ namespace bollettini.Views
             InitializeComponent();
             loadcombo();
             loadcombo2();
+            ListViewTest.ItemsSource = MyListArticoli;
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,10 +36,12 @@ namespace bollettini.Views
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private double importo = 0;
+        private string descr = null;
         private double totalone = 0;
         private double importo2 = 0;
         private string descr2 = null;
 
+        private static ObservableCollection<RiepilogoArticoli> MyListArticoli = new ObservableCollection<RiepilogoArticoli>();
 
         private void TextNrBollettini_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
@@ -48,27 +53,36 @@ namespace bollettini.Views
 
                 if (TextNrBollettini.Text != "")
                 {
-                    double totale = double.Parse(TextNrBollettini.Text);
-                    totale = totale * importo;
+                    double nrarticolo = double.Parse(TextNrBollettini.Text);
+                    double totale = nrarticolo * (importo + 1.78);
+
+                    string strtotale = totale.ToString("N2");
+
+                    string aaa = "Nr. ";
+                    aaa = aaa + TextNrBollettini.Text;
+                    aaa = aaa + " x ";
+                    aaa = aaa + importo.ToString("N2");
+
+                    RiepilogoArticoli artcar = new RiepilogoArticoli(strtotale, descr, aaa);
+                    MyListArticoli.Add(artcar);
+
+                 //   ListViewTest.ItemsSource = MyListArticoli;
 
 
+                    //string aa = "Nr. ";
+                    //string bb = " bollettini da ";
+                    //string cc = " euro";
 
-                    string addstring = totale.ToString("N2");
+                    //string dd = TextNrBollettini.Text;
+                    //string ee = importo.ToString("N2");
 
-                    string aa = "Nr. ";
-                    string bb = " bollettini da ";
-                    string cc = " euro";
+                    //string ff = (" - (Totale: ");
+                    //string gg = totale.ToString("N2");
+                    //string hh = " euro)";
 
-                    string dd = TextNrBollettini.Text;
-                    string ee = importo.ToString("N2");
+                    //string addstring2 = aa + dd + bb + ee + cc + ff + gg + hh;
 
-                    string ff = (" - (Totale: ");
-                    string gg = totale.ToString("N2");
-                    string hh = " euro)";
-
-                    string addstring2 = aa + dd + bb + ee + cc + ff + gg + hh;
-
-                    ListViewTest.Items.Add(addstring2);
+                    //ListViewTest.Items.Add(addstring2);
 
                     totalone += totale;
                     //alle da rimettere boxtotale.Text = "costo totale: " + totalone.ToString("N2");
@@ -127,6 +141,11 @@ namespace bollettini.Views
             string selection = cb.SelectedValue.ToString();
             importo = double.Parse(selection);
 
+            string key = ((KeyValuePair<string, string>)cb.SelectedItem).Key;
+
+            descr = key;
+
+
         }
 
         private void ComboAltro_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -151,27 +170,40 @@ namespace bollettini.Views
 
                 if (TextNrAltro.Text != "")
                 {
-                    double totale = double.Parse(TextNrAltro.Text);
-                    totale = totale * importo2;
+
+
+                    double nrarticolo = double.Parse(TextNrAltro.Text);
+                    double totale = nrarticolo * importo2;
+
+                    string strtotale = totale.ToString("N2");
+
+                    string aaa = "Nr. ";
+                    aaa = aaa + TextNrAltro.Text;
+                    aaa = aaa + " x ";
+                    aaa = aaa + importo2.ToString("N2");
+
+                    RiepilogoArticoli artcar = new RiepilogoArticoli(strtotale, descr2, aaa);
+                    MyListArticoli.Add(artcar);
+
+  //                  ListViewTest.ItemsSource = MyListArticoli;
 
 
 
-                    string addstring = totale.ToString("N2");
 
-                    string aa = "Nr. ";
-                    string bb = " bollettini da ";
-                    string cc = " euro";
+                    //string aa = "Nr. ";
+                    //string bb = " bollettini da ";
+                    //string cc = " euro";
 
-                    string dd = TextNrAltro.Text;
-                    string ee = importo2.ToString("N2");
+                    //string dd = TextNrAltro.Text;
+                    //string ee = importo2.ToString("N2");
 
-                    string ff = (" - (Totale: ");
-                    string gg = totale.ToString("N2");
-                    string hh = " euro)";
+                    //string ff = (" - (Totale: ");
+                    //string gg = totale.ToString("N2");
+                    //string hh = " euro)";
 
-                    string addstring2 = aa + dd + descr2 + ee + cc + ff + gg + hh;
+                    //string addstring2 = aa + dd + descr2 + ee + cc + ff + gg + hh;
 
-                    ListViewTest.Items.Add(addstring2);
+                    //ListViewTest.Items.Add(addstring2);
 
                     totalone += totale;
                     //alle da rimettere boxtotale.Text = "costo totale: " + totalone.ToString("N2");

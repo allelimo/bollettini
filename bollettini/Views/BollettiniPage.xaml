@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:bollettini"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
@@ -19,8 +20,24 @@
                 <StackPanel x:Name="ListaTotali" Margin="24,24,0,0" RelativePanel.RightOf="bollettini" Background="Aqua">
                     <ListView x:Name="ListViewTest">
                         <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}"/>
+                            <DataTemplate x:DataType="local:RiepilogoArticoli">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="{x:Bind Prezzo}" Width="64"
+                                    Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Right">
+                                    </TextBlock>
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Tipo}" Margin="12,6,0,0" 
+                                    Style="{ThemeResource BaseTextBlockStyle}"/>
+                                    <TextBlock  Grid.Column="1" Grid.Row="1" Text="{x:Bind Descrizione}" Margin="12,0,0,6" 
+                                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                                </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
