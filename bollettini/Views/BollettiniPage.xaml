@@ -8,17 +8,14 @@
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-
+        <Grid>
             <RelativePanel>
-                <StackPanel x:Name="bollettini" Margin="0" Background="red" Orientation="Horizontal">
-                    <ComboBox x:Name="ComboBollettini" Width="148" Header="Importo bollettini" SelectionChanged="ComboBollettini_SelectionChanged" />
+                <StackPanel x:Name="sp_bollettini" Margin="0" Orientation="Horizontal">
+                    <ComboBox x:Name="ComboBollettini" Width="158" Header="Importo bollettini" SelectionChanged="ComboBollettini_SelectionChanged" />
                     <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown"/>
-
                 </StackPanel>
-                <StackPanel x:Name="ListaTotali" Margin="24,24,0,0" RelativePanel.RightOf="bollettini" Background="Aqua">
-                    <ListView x:Name="ListViewTest">
+                <StackPanel x:Name="sp_listatotali" Margin="24,0,0,0" RelativePanel.RightOf="sp_bollettini" >
+                    <ListView x:Name="ListViewTest" Header="Dettagli degli articoli">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:RiepilogoArticoli">
                                 <Grid>
@@ -31,34 +28,24 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="{x:Bind Prezzo}" Width="64"
-                                    Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Right">
+                                                Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Right">
                                     </TextBlock>
                                     <TextBlock Grid.Column="1" Text="{x:Bind Tipo}" Margin="12,6,0,0" 
-                                    Style="{ThemeResource BaseTextBlockStyle}"/>
+                                                Style="{ThemeResource BaseTextBlockStyle}"/>
                                     <TextBlock  Grid.Column="1" Grid.Row="1" Text="{x:Bind Descrizione}" Margin="12,0,0,6" 
-                                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                                                Style="{ThemeResource BodyTextBlockStyle}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
                 </StackPanel>
-                <StackPanel x:Name="altre" Margin="0,24,0,0" RelativePanel.Below="bollettini" Orientation="Horizontal" Background="Yellow">
-
-                    <ComboBox x:Name="ComboAltro" Width="148" Header="Importo altri servizi" SelectionChanged="ComboAltro_SelectionChanged" />
-                <TextBox x:Name="TextNrAltro" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrAltro_KeyDown"/>
-
-
+                <StackPanel x:Name="sp_altre" Margin="0,24,0,0" RelativePanel.Below="sp_bollettini" Orientation="Horizontal" >
+                    <ComboBox x:Name="ComboAltro" Width="158" Header="Importo altri servizi" SelectionChanged="ComboAltro_SelectionChanged" />
+                    <TextBox x:Name="TextNrAltro" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrAltro_KeyDown"/>
                 </StackPanel>
-
-                <StackPanel x:Name="totali" Margin="0,24,0,0" RelativePanel.Below="altre" Orientation="Horizontal" Background="Blue">
-
-                    <TextBox x:Name="TextTotale" Width="148" Header="Importo totale" Margin="0,0,0,0" />
-
-
+                <StackPanel x:Name="sp_totali" Margin="0,24,0,0" RelativePanel.Below="sp_altre" Orientation="Horizontal" >
+                    <TextBox x:Name="TextTotale" Width="158" Header="Importo totale" Margin="0,0,0,0" TextAlignment="Right" FontWeight="Bold"/>
                 </StackPanel>
-
-
             </RelativePanel>
         </Grid>
     </Grid>
