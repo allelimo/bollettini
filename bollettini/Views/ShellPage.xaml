@@ -27,7 +27,11 @@
             Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
             Edit String/en-US/Resources.resw: Add a menu item title for each page
             -->
-            <winui:NavigationViewItem x:Uid="Shell_Bollettini" Icon="Document" helpers:NavHelper.NavigateTo="views:BollettiniPage" />
+            <winui:NavigationViewItem x:Uid="Shell_Bollettini"  helpers:NavHelper.NavigateTo="views:BollettiniPage" >
+            <winui:NavigationViewItem.Icon>
+                    <PathIcon Data="M5,14H19V15H5V14M21,17V8H3V17H21M1,5H23V19H1V5M5,10H12V12H5V10Z" />
+            </winui:NavigationViewItem.Icon>
+            </winui:NavigationViewItem>
             <winui:NavigationViewItem x:Uid="Shell_Assegni" Icon="Document" helpers:NavHelper.NavigateTo="views:AssegniPage" />
         </winui:NavigationView.MenuItems>
         <i:Interaction.Behaviors>

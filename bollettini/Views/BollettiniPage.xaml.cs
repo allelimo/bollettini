@@ -14,6 +14,7 @@ namespace bollettini.Views
         public BollettiniPage()
         {
             InitializeComponent();
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             LoadComboBollettini();
             LoadComboAltri();
             ListViewTest.ItemsSource = MyListArticoli;
