@@ -12,7 +12,7 @@
             <RelativePanel>
                 <StackPanel x:Name="sp_bollettini" Margin="0" Orientation="Horizontal">
                     <ComboBox x:Name="ComboBollettini" Width="158" Header="Importo bollettini" SelectionChanged="ComboBollettini_SelectionChanged" />
-                    <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown"/>
+                    <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown" BeforeTextChanging="TextNrBollettini_BeforeTextChanging"/>
                 </StackPanel>
                 <StackPanel x:Name="sp_listatotali" Margin="24,0,0,0" RelativePanel.RightOf="sp_bollettini" >
                     <ListView x:Name="ListViewTest" Header="Dettagli degli articoli">

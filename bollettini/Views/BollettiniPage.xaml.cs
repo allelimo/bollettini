@@ -6,6 +6,8 @@ using Windows.UI.Xaml.Controls;
 
 using System.Collections.Generic;  // per list
 using System.Collections.ObjectModel; // per observablecollection
+using System.Linq; //per beforechanging e solo numeri
+
 
 namespace bollettini.Views
 {
@@ -172,6 +174,12 @@ namespace bollettini.Views
                 }
             }
 
+        }
+
+        // permetti solo numeri
+        private void TextNrBollettini_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
+        {
+                args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
         }
     }
 }
