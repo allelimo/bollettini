@@ -12,7 +12,7 @@
             <RelativePanel>
                 <StackPanel x:Name="sp_bollettini" Margin="0" Orientation="Horizontal">
                     <ComboBox x:Name="ComboBollettini" Width="158" Header="Importo bollettini" SelectionChanged="ComboBollettini_SelectionChanged" />
-                    <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown" BeforeTextChanging="TextNrBollettini_BeforeTextChanging"/>
+                    <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown" BeforeTextChanging="TextNr_BeforeTextChanging"/>
                 </StackPanel>
                 <StackPanel x:Name="sp_listatotali" Margin="24,0,0,0" RelativePanel.RightOf="sp_bollettini" >
                     <ListView x:Name="ListViewTest" Header="Dettagli degli articoli">
@@ -41,7 +41,7 @@
                 </StackPanel>
                 <StackPanel x:Name="sp_altre" Margin="0,24,0,0" RelativePanel.Below="sp_bollettini" Orientation="Horizontal" >
                     <ComboBox x:Name="ComboAltro" Width="158" Header="Importo altri servizi" SelectionChanged="ComboAltro_SelectionChanged" />
-                    <TextBox x:Name="TextNrAltro" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrAltro_KeyDown"/>
+                    <TextBox x:Name="TextNrAltro" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrAltro_KeyDown" BeforeTextChanging="TextNr_BeforeTextChanging"/>
                 </StackPanel>
                 <StackPanel x:Name="sp_totali" Margin="0,24,0,0" RelativePanel.Below="sp_altre" Orientation="Horizontal" >
                     <TextBox x:Name="TextTotale" Width="158" Header="Importo totale" Margin="0,0,0,0" TextAlignment="Right" FontWeight="Bold"/>

@@ -97,8 +97,6 @@ namespace bollettini.Views
             {
                 e.Handled = true;
 
-                //alle aggiungere controllo che in edit ci siano solo numeri
-
                 if (TextNrBollettini.Text != "")
                 {
                     double nrarticoli = double.Parse(TextNrBollettini.Text);
@@ -113,7 +111,6 @@ namespace bollettini.Views
                     MyListArticoli.Add(artcar);
 
                     GranTotale += totale;
-                    //alle da rimettere boxtotale.Text = "costo totale: " + totalone.ToString("N2");
                     TextTotale.Text = GranTotale.ToString("N2");
                     TextNrBollettini.Text = "";
                 }
@@ -126,12 +123,8 @@ namespace bollettini.Views
             {
                 e.Handled = true;
 
-                //alle aggiungere controllo che in edit ci siano solo numeri
-
                 if (TextNrAltro.Text != "")
                 {
-
-
                     double nrarticolo = double.Parse(TextNrAltro.Text);
                     double totale = nrarticolo * ImportoAltri;
 
@@ -176,8 +169,8 @@ namespace bollettini.Views
 
         }
 
-        // permetti solo numeri
-        private void TextNrBollettini_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
+        // permetti solo numeri per tutti i text_nr
+        private void TextNr_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
         {
                 args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
         }
