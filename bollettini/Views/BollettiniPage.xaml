@@ -15,7 +15,7 @@
                     <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown" BeforeTextChanging="TextNr_BeforeTextChanging"/>
                 </StackPanel>
                 <StackPanel x:Name="sp_listatotali" Margin="24,0,0,0" RelativePanel.RightOf="sp_bollettini" >
-                    <ListView x:Name="ListViewTest" Header="Dettagli degli articoli">
+                    <ListView x:Name="ListViewTest" Header="Dettagli degli articoli" SelectionChanged="ListViewTest_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:RiepilogoArticoli">
                                 <Grid>
@@ -46,6 +46,14 @@
                 <StackPanel x:Name="sp_totali" Margin="0,24,0,0" RelativePanel.Below="sp_altre" Orientation="Horizontal" >
                     <TextBox x:Name="TextTotale" Width="158" Header="Importo totale" Margin="0,0,0,0" TextAlignment="Right" FontWeight="Bold"/>
                 </StackPanel>
+                <StackPanel x:Name="sp_blank" Margin="0,24,0,0" RelativePanel.Below="sp_totali" Orientation="Horizontal" >
+                </StackPanel>
+                <StackPanel x:Name="sp_comandi" Margin="0,24,0,0" RelativePanel.Below="sp_blank" Orientation="Vertical" >
+                    <Button x:Name="BtnSvuotaCarrello" Content="Svuota carrello" Width="158" Click="BtnSvuotaCarrello_Click"/>
+                    <Button x:Name="BtnRimuoviArticolo" Content="Rimuovi riga" Width="158" Margin="0,24,0,0" Click="BtnRimuoviArticolo_Click"/>
+
+                </StackPanel>
+
             </RelativePanel>
         </Grid>
     </Grid>

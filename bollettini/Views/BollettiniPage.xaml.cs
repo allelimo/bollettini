@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;  // per list
 using System.Collections.ObjectModel; // per observablecollection
 using System.Linq; //per beforechanging e solo numeri
-
+using System.Linq.Expressions;
 
 namespace bollettini.Views
 {
@@ -43,6 +43,8 @@ namespace bollettini.Views
         private double ImportoAltri = 0;
         private string DescrizioneAltri = null;
         private double GranTotale = 0;
+
+        private double prezzodarimuovere = 0;
 
 
         private static ObservableCollection<RiepilogoArticoli> MyListArticoli = new ObservableCollection<RiepilogoArticoli>();
@@ -173,6 +175,56 @@ namespace bollettini.Views
         private void TextNr_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
         {
                 args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
+        }
+
+        private void BtnSvuotaCarrello_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            GranTotale = 0;
+
+            TextTotale.Text = GranTotale.ToString("N2");
+            //FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+
+            MyListArticoli.Clear();
+
+        }
+
+        private void BtnRimuoviArticolo_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            int selected = ListViewTest.SelectedIndex;
+
+            GranTotale -= prezzodarimuovere;
+            TextTotale.Text = GranTotale.ToString("N2");
+
+
+
+            MyListArticoli.RemoveAt(selected);
+
+        }
+
+        private void ListViewTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (e.AddedItems != null )
+            //{
+            //    var myItems = e.AddedItems[0] as RiepilogoArticoli;
+            //    string asasdfg = myItems.Prezzo;
+            //    prezzodarimuovere = double.Parse(asasdfg);
+
+
+            //}
+            if (e.AddedItems != null )
+            {
+                try
+                {
+                    var myItems = e.AddedItems[0] as RiepilogoArticoli;
+                        string asasdfg = myItems.Prezzo;
+                        prezzodarimuovere = double.Parse(asasdfg);
+
+
+                }
+                catch { }
+            }
+
+
         }
     }
 }

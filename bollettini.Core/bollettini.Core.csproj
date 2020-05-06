@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>bollettini.Core</RootNamespace>
-    <AssemblyVersion>1.0.7430.36980</AssemblyVersion>
-    <FileVersion>1.0.7430.36980</FileVersion>
+    <AssemblyVersion>1.0.7431.35248</AssemblyVersion>
+    <FileVersion>1.0.7431.35248</FileVersion>
   </PropertyGroup>
 
    <ItemGroup>
