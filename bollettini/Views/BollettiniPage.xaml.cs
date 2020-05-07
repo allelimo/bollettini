@@ -19,7 +19,7 @@ namespace bollettini.Views
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             LoadComboBollettini();
             LoadComboAltri();
-            ListViewTest.ItemsSource = MyListArticoli;
+            ListViewCarrello.ItemsSource = MyListArticoli;
 
         }
 
@@ -140,7 +140,7 @@ namespace bollettini.Views
                     RiepilogoArticoli artcar = new RiepilogoArticoli(strtotale, DescrizioneAltri, aaa);
                     MyListArticoli.Add(artcar);
 
-  //                  ListViewTest.ItemsSource = MyListArticoli;
+  //                  ListViewCarrello.ItemsSource = MyListArticoli;
 
 
 
@@ -158,7 +158,7 @@ namespace bollettini.Views
 
                     //string addstring2 = aa + dd + descr2 + ee + cc + ff + gg + hh;
 
-                    //ListViewTest.Items.Add(addstring2);
+                    //ListViewCarrello.Items.Add(addstring2);
 
                     GranTotale += totale;
                     //alle da rimettere boxtotale.Text = "costo totale: " + totalone.ToString("N2");
@@ -190,7 +190,7 @@ namespace bollettini.Views
 
         private void BtnRimuoviArticolo_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            int selected = ListViewTest.SelectedIndex;
+            int selected = ListViewCarrello.SelectedIndex;
 
             GranTotale -= prezzodarimuovere;
             TextTotale.Text = GranTotale.ToString("N2");
@@ -201,7 +201,7 @@ namespace bollettini.Views
 
         }
 
-        private void ListViewTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListViewCarrello_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if (e.AddedItems != null )
             //{
@@ -211,17 +211,19 @@ namespace bollettini.Views
 
 
             //}
-            if (e.AddedItems != null )
+            if (e.AddedItems != null && e.AddedItems.Count > 0)
             {
-                try
+ //               try
                 {
                     var myItems = e.AddedItems[0] as RiepilogoArticoli;
-                        string asasdfg = myItems.Prezzo;
-                        prezzodarimuovere = double.Parse(asasdfg);
+                        string prezzoselezionato = myItems.Prezzo;
+                        prezzodarimuovere = double.Parse(prezzoselezionato);
 
 
                 }
-                catch { }
+  //              catch { }
+                //alle non so perchè con try/catch funziona, mentre senza non supera la prima riga di codice
+                //alle ok adesso funziona controllando che gli items siano maggiori di 0, rimosso try/catch
             }
 
 

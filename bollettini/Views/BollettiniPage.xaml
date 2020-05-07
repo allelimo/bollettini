@@ -15,7 +15,7 @@
                     <TextBox x:Name="TextNrBollettini" Width="65" Header="Nr." Margin="24,0,0,0" KeyDown="TextNrBollettini_KeyDown" BeforeTextChanging="TextNr_BeforeTextChanging"/>
                 </StackPanel>
                 <StackPanel x:Name="sp_listatotali" Margin="24,0,0,0" RelativePanel.RightOf="sp_bollettini" >
-                    <ListView x:Name="ListViewTest" Header="Dettagli degli articoli" SelectionChanged="ListViewTest_SelectionChanged">
+                    <ListView x:Name="ListViewCarrello" Header="Dettagli degli articoli" SelectionChanged="ListViewCarrello_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local:RiepilogoArticoli">
                                 <Grid>
