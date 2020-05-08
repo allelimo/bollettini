@@ -43,9 +43,10 @@ namespace bollettini.Views
         private double ImportoAltri = 0;
         private string DescrizioneAltri = null;
         private double GranTotale = 0;
-
         private double prezzodarimuovere = 0;
 
+        //alle variabile da caricare
+        private double postemotori = 1.78;
 
         private static ObservableCollection<RiepilogoArticoli> MyListArticoli = new ObservableCollection<RiepilogoArticoli>();
 
@@ -58,10 +59,11 @@ namespace bollettini.Views
             bollettini.Add("Imposta Bollo - 32", "32.00");
             bollettini.Add("Imposta Bollo - 48", "48.00");
             bollettini.Add("Imposta Bollo - 64", "64.00");
-            bollettini.Add("Targa ciclomotore", "13.00");
-            bollettini.Add("Targa prova", "26.00");
-            bollettini.Add("Targa motociclo", "23.00");
-            bollettini.Add("Targa autovettura", "40.00");
+            bollettini.Add("Targa ciclomotore", "13.58");
+            bollettini.Add("Targa prova", "18.37");
+            bollettini.Add("Targa motociclo", "22.26");
+            bollettini.Add("Targa ripetitrice", "24.74");
+            bollettini.Add("Targa autovettura", "41.78");
             ComboBollettini.ItemsSource = bollettini;
             ComboBollettini.SelectedValuePath = "Value";
             ComboBollettini.DisplayMemberPath = "Key";
@@ -102,7 +104,7 @@ namespace bollettini.Views
                 if (TextNrBollettini.Text != "")
                 {
                     double nrarticoli = double.Parse(TextNrBollettini.Text);
-                    double totale = nrarticoli * (ImportoBollettino + 1.78); //alle rendere variabile 1.78
+                    double totale = nrarticoli * (ImportoBollettino + postemotori); 
                     string strtotale = totale.ToString("N2");
                     string a = "Nr. ";
                     a = a + TextNrBollettini.Text;
